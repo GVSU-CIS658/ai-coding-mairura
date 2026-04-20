@@ -1,0 +1,412 @@
+/* ── TOKENS — DARK (default) ─────────────────────── */
+:root {
+  --bg: #07070d;
+  --bg2: #0e0e1a;
+  --card: #12121f;
+  --card-h: #1a1a2e;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-g: rgba(240, 180, 41, 0.25);
+  --gold: #f0b429;
+  --gold-l: #ffd166;
+  --gold-d: rgba(240, 180, 41, 0.1);
+  --green: #00c47a;
+  --green-d: rgba(0, 196, 122, 0.12);
+  --red: #ff4757;
+  --red-d: rgba(255, 71, 87, 0.12);
+  --blue: #4fc3f7;
+  --t1: #e8e8f0;
+  --t2: #8888a8;
+  --t3: #44445a;
+  --mono: "JetBrains Mono", monospace;
+  --serif: "Playfair Display", serif;
+  --sans: "DM Sans", sans-serif;
+  --r: 12px;
+  --rl: 20px;
+  --nav-bg: rgba(7, 7, 13, 0.88);
+  --ticker-bg: #0e0e1a;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ── TOKENS — LIGHT ──────────────────────────────── */
+:root.light {
+  --bg: #f4f4f8;
+  --bg2: #eaeaf0;
+  --card: #ffffff;
+  --card-h: #f0f0f6;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-g: rgba(214, 140, 0, 0.3);
+  --gold: #c98f00;
+  --gold-l: #e0a800;
+  --gold-d: rgba(201, 143, 0, 0.1);
+  --green: #007a4d;
+  --green-d: rgba(0, 122, 77, 0.1);
+  --red: #d93025;
+  --red-d: rgba(217, 48, 37, 0.1);
+  --blue: #1565c0;
+  --t1: #111118;
+  --t2: #555570;
+  --t3: #9999b0;
+  --nav-bg: rgba(244, 244, 248, 0.92);
+  --ticker-bg: #eaeaf0;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ── THEME TRANSITION ────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.2s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ── RESET ──────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--t1);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* subtle grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(240, 180, 41, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240, 180, 41, 0.018) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+:root.light body::before {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+#app {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SCROLLBAR ──────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--t3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ── TYPE ───────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+}
+.mono {
+  font-family: var(--mono);
+}
+
+/* ── BUTTONS ────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: var(--r);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-gold {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+}
+:root.light .btn-gold {
+  color: #fff;
+}
+.btn-gold:hover {
+  background: var(--gold-l);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(240, 180, 41, 0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--t1);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-d);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--t2);
+  padding: 7px 11px;
+}
+.btn-ghost:hover {
+  color: var(--t1);
+  background: rgba(0, 0, 0, 0.05);
+}
+:root.light .btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+.btn-danger {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid rgba(255, 71, 87, 0.25);
+}
+.btn-danger:hover {
+  background: var(--red-d);
+}
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 12px;
+}
+.btn-icon {
+  padding: 7px;
+  border-radius: 8px;
+}
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── CARD ───────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+.card:hover {
+  border-color: var(--border-g);
+  box-shadow: 0 0 32px rgba(240, 180, 41, 0.08);
+}
+
+/* ── BADGES ─────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+.badge-up {
+  background: var(--green-d);
+  color: var(--green);
+}
+.badge-down {
+  background: var(--red-d);
+  color: var(--red);
+}
+.badge-flat {
+  background: rgba(136, 136, 168, 0.1);
+  color: var(--t2);
+}
+
+/* ── INPUT ──────────────────────────────────────── */
+.input {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  color: var(--t1);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 10px 16px;
+  outline: none;
+  width: 100%;
+}
+.input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px var(--gold-d);
+}
+.input::placeholder {
+  color: var(--t3);
+}
+
+/* ── COLORS ─────────────────────────────────────── */
+.up {
+  color: var(--green);
+}
+.down {
+  color: var(--red);
+}
+.neutral {
+  color: var(--t2);
+}
+.gold {
+  color: var(--gold);
+}
+
+/* ── LAYOUT ─────────────────────────────────────── */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.page-title {
+  font-size: clamp(26px, 4vw, 40px);
+  line-height: 1.2;
+}
+.page-sub {
+  color: var(--t2);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* ── SKELETONS ──────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+.skel {
+  background: linear-gradient(
+    90deg,
+    var(--card) 25%,
+    var(--card-h) 50%,
+    var(--card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--r);
+}
+
+/* ── ANIMATIONS ─────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.afu {
+  animation: fadeUp 0.45s ease both;
+}
+.afi {
+  animation: fadeIn 0.35s ease both;
+}
+
+/* stagger */
+.sg > * {
+  opacity: 0;
+  animation: fadeUp 0.45s ease both;
+}
+.sg > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.sg > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.sg > *:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.sg > *:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.sg > *:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.sg > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.sg > *:nth-child(7) {
+  animation-delay: 0.35s;
+}
+.sg > *:nth-child(8) {
+  animation-delay: 0.4s;
+}
+.sg > *:nth-child(9) {
+  animation-delay: 0.45s;
+}
+.sg > *:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+/* ── EMPTY STATE ────────────────────────────────── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--t2);
+}
+.empty-ico {
+  font-size: 56px;
+  margin-bottom: 18px;
+  opacity: 0.4;
+}
+.empty h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--t1);
+  margin-bottom: 6px;
+}
+.empty p {
+  font-size: 13px;
+  max-width: 280px;
+  margin: 0 auto 22px;
+}
+
+/* ── ROUTE TRANSITION ───────────────────────────── */
+.route-enter-active,
+.route-leave-active {
+  transition: all 0.25s ease;
+}
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
