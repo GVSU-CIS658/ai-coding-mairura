@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="8" fill="#07070d"/>
+  <!-- Gold border -->
+  <rect width="32" height="32" rx="8" fill="none" stroke="#f0b429" stroke-width="1.5"/>
+  <!-- Trending up chart line -->
+  <polyline
+    points="4,24 10,16 16,19 22,10 28,6"
+    fill="none"
+    stroke="#f0b429"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Arrow head -->
+  <polyline
+    points="23,6 28,6 28,11"
+    fill="none"
+    stroke="#f0b429"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
